@@ -38,6 +38,7 @@ namespace DuckScience
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddAutoMapper(typeof(Startup));
             services.AddCors();
         }
 
