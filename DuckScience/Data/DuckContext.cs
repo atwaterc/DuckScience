@@ -15,5 +15,6 @@ namespace DuckScience.Data
 
         // create Ducks table
         public DbSet<Duck> Ducks { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using DuckScience.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DuckScience.Data.Migrations
 {
     [DbContext(typeof(DuckContext))]
-    partial class DuckContextModelSnapshot : ModelSnapshot
+    [Migration("20220121211352_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

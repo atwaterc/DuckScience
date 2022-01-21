@@ -10,8 +10,19 @@ namespace DuckScience.Data
     {
         public static void Initialize(DuckContext context)
         {
-            // check if Ducks data already exists
+            // check if data already exists
             if (context.Ducks.Any()) return;
+            if (context.Users.Any()) return;
+
+            // create new User
+            var user = new User
+            {
+                Name = "Dexter McPherson",
+                Username = "demc",
+                Password = "bestcartoon"
+            };
+
+            context.Users.Add(user);
 
             // create list of seeded ducks
             var ducks = new List<Duck>
