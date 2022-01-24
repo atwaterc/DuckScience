@@ -18,12 +18,11 @@ const navStyles = {
 function Header() {
   return (
       <AppBar position='static' sx={{ mb: 4 }}>
-          <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Toolbar sx={{justifyContent: 'space-between', alignItems: 'center'}}>
               <Box>
               <Typography variant='h6' component={NavLink} to='/' sx={{color: 'inherit', textDecoration: 'none'}}>Duck Science</Typography>
               </Box>
-              <List sx={{display: 'flex'}}>
-                  
+              <List sx={{display: 'flex'}}>  
                   <ListItem
                     component={NavLink}
                     to='/add-duck'
