@@ -11,16 +11,6 @@ function AddDuckPage() {
         mode: 'all'
     })
 
-    const duckFactsArray = [
-      {fact: 'Ducks are mostly aquatic birds living in both fresh water and sea water and found on every continent except for Antarctica.'},
-      {fact: 'Wetlands, such as ponds, streams, lakes and lagoons, and woodland areas, such as swamp forests and stands of mangrove trees, are natural habitats for ducks.'},
-      {fact: 'Ducks have been domesticated as pets and farm animals for more than 500 years, and all domestic ducks are descended from either the mallard or the Muscovy duck.'},
-      {fact: 'Ducks feet has no nerves or blood vessels, meaning that their feet do not feel the cold! This enables ducks to swim in icy water, and walk in ice and snow.'},
-      {fact: 'Ducks have three eyelids. '},
-      {fact: 'Ducks are very social animals who feel most at ease when they’re in larger groups of other ducks.'},
-      {fact: 'Ducks are omnivores.'},
-    ]
-
     async function submitForm(data: FieldValues) {
         try {
             await axios.post('http://localhost:5000/api/ducks/add-duck', data)
@@ -44,6 +34,15 @@ function AddDuckPage() {
 
     // keep updating duck facts every 7s
     useEffect(() => {
+      const duckFactsArray = [
+        {fact: 'Ducks are mostly aquatic birds living in both fresh water and sea water and found on every continent except for Antarctica.'},
+        {fact: 'Wetlands, such as ponds, streams, lakes and lagoons, and woodland areas, such as swamp forests and stands of mangrove trees, are natural habitats for ducks.'},
+        {fact: 'Ducks have been domesticated as pets and farm animals for more than 500 years, and all domestic ducks are descended from either the mallard or the Muscovy duck.'},
+        {fact: 'Ducks feet has no nerves or blood vessels, meaning that their feet do not feel the cold! This enables ducks to swim in icy water, and walk in ice and snow.'},
+        {fact: 'Ducks have three eyelids. '},
+        {fact: 'Ducks are very social animals who feel most at ease when they’re in larger groups of other ducks.'},
+        {fact: 'Ducks are omnivores.'},
+      ]
       const interval = setInterval(() => {
         let fact = document.getElementById('duck-facts')
         let index = Math.floor(Math.random() * duckFactsArray.length)
