@@ -1,6 +1,6 @@
 export interface Duck {
   id: number;
-  timeFed: any;
+  timeFed: string;
   foodType: string;
   locationFed: string;
   qtyDucksFed: number;

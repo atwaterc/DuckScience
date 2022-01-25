@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const navStyles = {
     color: 'inherit',
@@ -36,6 +37,17 @@ function Header() {
                     nav('/dashboard/ducks')
                     setIsLoggedIn(true)
                     console.log(register)
+                }
+                else {
+                    toast.error('Please check Username/ Password again', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 }
             })
         } catch (err) {

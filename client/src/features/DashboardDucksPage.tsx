@@ -47,7 +47,7 @@ function DashboardDucksPage() {
                 <TableBody>
                   {ducks && ducks.map((duck) => (
                     <TableRow key={duck.id} hover={true} sx={rowStyle}>
-                        <TableCell key={duck.id + 'timeFed'} sx={cellStyle} align="center">{duck.timeFed.hours}:{duck.timeFed.minutes} AM</TableCell>
+                        <TableCell key={duck.id + 'timeFed'} sx={cellStyle} align="center">{duck.timeFed} PM</TableCell>
                         <TableCell key={duck.id + 'foodType'} sx={cellStyle} align="center">{duck.foodType}</TableCell>
                         <TableCell key={duck.id + 'locationFed'} sx={cellStyle} align="center">{duck.locationFed}</TableCell>
                         <TableCell key={duck.id + 'qtyDucksFed'} sx={cellStyle} align="center">{duck.qtyDucksFed}</TableCell>
