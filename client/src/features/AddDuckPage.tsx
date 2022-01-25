@@ -1,15 +1,25 @@
 import { LoadingButton } from '@mui/lab';
-import { Box, InputAdornment, TextField } from '@mui/material';
+import { Box, Container, InputAdornment, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function AddDuckPage() {
-  const {register, reset, handleSubmit, formState: {isSubmitting, errors, isValid}} = useForm({
+    const {register, reset, handleSubmit, formState: {isSubmitting, errors, isValid}} = useForm({
         mode: 'all'
     })
+
+    const duckFactsArray = [
+      {fact: 'Ducks are mostly aquatic birds living in both fresh water and sea water and found on every continent except for Antarctica.'},
+      {fact: 'Wetlands, such as ponds, streams, lakes and lagoons, and woodland areas, such as swamp forests and stands of mangrove trees, are natural habitats for ducks.'},
+      {fact: 'Ducks have been domesticated as pets and farm animals for more than 500 years, and all domestic ducks are descended from either the mallard or the Muscovy duck.'},
+      {fact: 'Ducks feet has no nerves or blood vessels, meaning that their feet do not feel the cold! This enables ducks to swim in icy water, and walk in ice and snow.'},
+      {fact: 'Ducks have three eyelids. '},
+      {fact: 'Ducks are very social animals who feel most at ease when they’re in larger groups of other ducks.'},
+      {fact: 'Ducks are omnivores.'},
+    ]
 
     async function submitForm(data: FieldValues) {
         try {
@@ -31,8 +41,27 @@ function AddDuckPage() {
         console.log(err)
         }
     }
+
+    // keep updating duck facts every 7s
+    useEffect(() => {
+      const interval = setInterval(() => {
+        let fact = document.getElementById('duck-facts')
+        let index = Math.floor(Math.random() * duckFactsArray.length)
+        fact!.textContent = duckFactsArray[index].fact
+      }, 7000)
+      return () => clearInterval(interval);
+    }, [])
+
   return (
-    <Box component="form" onSubmit={handleSubmit(submitForm)} noValidate sx={{ mt: 1 }}>
+    <Container>
+      <Box display='inline' textAlign='center' >
+        <Typography sx={{width: '100%'}} variant='h5'>Cool Duck Facts</Typography>
+        <Typography id='duck-facts' sx={{width: '100%', fontStyle: 'italic', minHeight: 80}} variant='body1'>
+          There are approximately 120 different species of ducks
+        </Typography>
+      </Box>
+    <Box display='flex' alignItems='center' justifyContent='center' 
+      component="form" onSubmit={handleSubmit(submitForm)} noValidate sx={{ mt: 1 }}>
         <TextField
             variant='outlined'
             size='small'
@@ -96,11 +125,12 @@ function AddDuckPage() {
             loading={isSubmitting}
             type="submit"
             variant="contained"
-            sx={{textAlign: 'center'}}
+            sx={{width: '25%', margin: 'auto'}}
         >
             Submit Duck
         </LoadingButton>
     </Box>
+    </Container>
   )
 }
 
