@@ -9,6 +9,7 @@ const navStyles = {
     color: 'inherit',
     textDecoration: 'none',
     typography: 'overline',
+    minWidth: '10vw',
     '&:hover': {
         color: 'grey.500'
     },
@@ -64,9 +65,9 @@ function Header() {
                       Add Duck
                   </ListItem>          
               </List>
-            <List sx={{display: 'flex'}}>  
+            
               { isLoggedIn ? (
-                <>
+                <List sx={{display: 'flex'}}>  
                     <ListItem
                         component={NavLink}
                         to='/dashboard/ducks'
@@ -85,9 +86,9 @@ function Header() {
                     >
                         Logout
                     </ListItem>
-                </>
+                </List>
               ) : (
-                <>
+                <List sx={{display: 'flex'}}>  
                     <Box component="form" onSubmit={handleSubmit(submitForm)} noValidate sx={{ mt: 1 }}>
                         <TextField
                             variant='filled'
@@ -123,9 +124,8 @@ function Header() {
                             Login
                         </LoadingButton>
                     </Box>
-                </>
+                </List>
               )}
-              </List>
           </Toolbar>
       </AppBar>
     );
