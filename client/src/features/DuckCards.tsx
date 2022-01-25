@@ -1,5 +1,4 @@
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
-import React from 'react';
 
 function DuckCards({img, title, desc}: any) {
   return (

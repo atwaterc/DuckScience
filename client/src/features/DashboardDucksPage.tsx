@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, Table } from '@mui/material';
 import axios from 'axios';
 import Spinner from './common/Spinner';
 import { Duck } from '../app/models/duck';
 
+// style for row
 const rowStyle = {
     backgroundColor: 'white',
     '&:hover': {
@@ -16,7 +17,9 @@ const cellStyle = {
 }
 
 function DashboardDucksPage() {
+  // set state for array of ducks
   const [ducks, setDucks] = useState<Duck[]>([])
+  // set state for loading spinner
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -28,6 +31,7 @@ function DashboardDucksPage() {
     })
   }, [])
 
+  // check if data is still loading
   if (loading) return (
         <Spinner />
     )

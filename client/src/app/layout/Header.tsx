@@ -25,8 +25,10 @@ function Header() {
     const {register, reset, handleSubmit, formState: {isSubmitting, errors, isValid}} = useForm({
         mode: 'all'
     })
+    // set state to determine if user logs in or not
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+    // retrieve form data for purpose of submitting to back end
     async function submitForm(data: FieldValues) {
         try {
             await axios.post('http://localhost:5000/api/user/login', data)
@@ -36,7 +38,6 @@ function Header() {
                 if (localStorage.getItem('user') !== null) {
                     nav('/dashboard/ducks')
                     setIsLoggedIn(true)
-                    console.log(register)
                 }
                 else {
                     toast.error('Please check Username/ Password again', {
@@ -55,6 +56,7 @@ function Header() {
         }
     }
 
+    // handle logout event
     const handleLogout = () => {
         setIsLoggedIn(false)
         localStorage.removeItem('user')

@@ -11,6 +11,7 @@ function AddDuckPage() {
         mode: 'all'
     })
 
+    // submit form data of duck data to backend
     async function submitForm(data: FieldValues) {
         try {
             await axios.post('http://localhost:5000/api/ducks/add-duck', data)
@@ -44,6 +45,7 @@ function AddDuckPage() {
         {fact: 'Ducks are omnivores.'},
       ]
       const interval = setInterval(() => {
+        // randomize array item to display
         let fact = document.getElementById('duck-facts')
         let index = Math.floor(Math.random() * duckFactsArray.length)
         fact!.textContent = duckFactsArray[index].fact
