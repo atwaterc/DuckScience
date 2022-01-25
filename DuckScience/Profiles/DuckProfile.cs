@@ -13,7 +13,11 @@ namespace DuckScience.Profiles
         public DuckProfile()
         {
             // create mapping for Duck and DuckDto
-            CreateMap<Duck, DuckDto>().ReverseMap();
+            CreateMap<Duck, DuckDto>();
+
+            CreateMap<DuckDto, Duck>()
+                .ForMember(dest => dest.TimeFed,
+                    opt => opt.MapFrom(src => TimeSpan.Parse(src.TimeFed)));
         }
     }
 }

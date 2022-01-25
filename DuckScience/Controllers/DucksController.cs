@@ -36,5 +36,16 @@ namespace DuckScience.Controllers
 
             return Ok(ducksToReturn);
         }
+
+        [HttpPost("add-duck")]
+        public ActionResult<List<DuckDto>> AddDuck(DuckDto duckDto)
+        {
+            var duck = _mapper.Map<Duck>(duckDto);
+
+            _context.Ducks.Add(duck);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
