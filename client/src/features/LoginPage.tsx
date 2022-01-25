@@ -1,6 +1,5 @@
 import { Box, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { LoadingButton } from '@mui/lab'
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,6 @@ function LoginPage() {
           .catch(err => console.log(err))
           .finally(() => {
               if (localStorage.getItem('user') !== null) {
-                console.log('notnull')
                 nav('/dashboard/ducks')
               }
           })
